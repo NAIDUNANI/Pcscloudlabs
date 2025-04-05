@@ -17,8 +17,8 @@ public class PcsDatabaseConnection {
                 Class.forName("com.mysql.cj.jdbc.Driver"); 
                 connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/pcscloudlabs?useSSL=false&allowPublicKeyRetrieval=true",
-                    "cloudlabs",
-                    "PCSGlobal@4321"
+                    "root",
+                    "Naidu"
                 );
             }
         } catch (ClassNotFoundException | SQLException e) {

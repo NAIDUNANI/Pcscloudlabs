@@ -1,9 +1,9 @@
 package com.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import database.PcsDatabaseConnection;
 
 public class VerifyBean {
     private String email;
@@ -20,20 +20,11 @@ public class VerifyBean {
 
     public String getMessage() { return message; }
     public boolean isVerified() { return verified; }
-
-    // Database connection method
-    private Connection connect() throws Exception {
-        String url = "jdbc:mysql://localhost:3306/pcscloudlabs?useSSL=false&allowPublicKeyRetrieval=true";
-        String dbUser = "cloudlabs";
-        String dbPassword = "PCSGlobal@4321";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(url, dbUser, dbPassword);
-    }
-
+    
     // Method to verify the code
     public boolean verifyUser() {
         String sql = "SELECT verification_code FROM Users WHERE email = ? AND verified = 0";
-        try (Connection conn = connect();
+        try (Connection conn = PcsDatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, email);

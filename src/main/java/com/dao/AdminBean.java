@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import database.PcsDatabaseConnection;
-
 
 public class AdminBean {
     private String email;
@@ -38,7 +36,7 @@ public class AdminBean {
         this.created_at = created_at;
     }
 
-    // ✅ Validate admin login
+    //Validate admin login
     public boolean validateAdmin() {
         boolean isValid = false;
         String sql = "SELECT * FROM Admins WHERE Email = ? AND Password = ?";

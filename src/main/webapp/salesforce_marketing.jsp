@@ -19,7 +19,7 @@
 	rel="stylesheet" />
 <style>
 .top-banner {
-	background: linear-gradient(to right, #d53369, #daae51);
+	background:  #FFA500;
 	color: white;
 	text-align: center;
 	padding: 10px;
@@ -29,7 +29,7 @@
 }
 
 .hero-section {
-	background: linear-gradient(to right, #1e88e5, #42a5f5);
+	background: #002d62;
 	color: white;
 	text-align: center;
 	padding: 50px 20px;
@@ -354,8 +354,8 @@ table td::before {
 </head>
 <body>
 	<div class="top-banner">
-		DEAL OF THE DAY : GET 30% OFF ON SELF-PACED COURSES | <span>06
-			Days 23 Hr 59 Min 23 Sec</span>
+		SPECIAL OFFER: ACCESS SELF-PACED COURSES AT A DISCOUNTED PRICE! <span>
+			</span>
 	</div>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -384,13 +384,13 @@ table td::before {
 	<div class="hero-section">
 		<h1>Salesforce Marketing Cloud Training | #1 SFMC Course</h1>
 		<div class="course-info">
-			span>&#x23F0; 24 hours</span>
+			<span>&#x23F0; 24 hours</span>
 			<!-- Clock icon -->
-			<span>&#x1F4F9; 24 Videos</span>
+			<span>&#x1F4F9; 30 Videos</span>
 			<!-- Video icon -->
-			<span>&#x1F514; 8019 Participants</span>
+			<span>&#x1F514; 4000 Participants</span>
 			<!-- Bell icon -->
-			<span>&#x1F393; 3947 Reviews |4.8
+			<span>&#x1F393; 2000 Reviews |4.8
 				&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
 		</div>
 
@@ -455,24 +455,24 @@ table td::before {
 			<div class="col-md-4 col-sm-6">
 				<div class="batch-card text-center">
 					<span class="batch-label">Weekday</span>
-					<p class="batch-date">Feb 13 (1 HR A DAY)</p>
-					<p>06:30 PM PST</p>
+					<p class="batch-date">April 5 (1 HR A DAY)</p>
+					<!--  <p>06:30 PM PST</p>-->
 					<a href="#" class="enroll-link">Enroll Now &rarr;</a>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="batch-card text-center">
 					<span class="batch-label">Weekday</span>
-					<p class="batch-date">Feb 26 (1 HR A DAY)</p>
-					<p>07:30 AM PST</p>
+					<p class="batch-date">April 10 (1 HR A DAY)</p>
+					<!--  <p>07:30 AM PST</p>-->
 					<a href="#" class="enroll-link">Enroll Now &rarr;</a>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="batch-card text-center">
 					<span class="batch-label">Weekend</span>
-					<p class="batch-date">Feb 22 (1 HR A DAY)</p>
-					<p>08:30 PM PST</p>
+					<p class="batch-date">April 15 (1 HR A DAY)</p>
+					<!-- <p>08:30 PM PST</p>-->
 					<a href="#" class="enroll-link">Enroll Now &rarr;</a>
 				</div>
 			</div>
@@ -483,24 +483,24 @@ table td::before {
 			<div class="col-md-4 col-sm-6">
 				<div class="batch-card text-center">
 					<span class="batch-label">Weekday</span>
-					<p class="batch-date">Feb 14 (1 HR A DAY)</p>
-					<p>07:00 AM IST</p>
+					<p class="batch-date">April 20 (1 HR A DAY)</p>
+					<!--  <p>07:00 AM IST</p>-->
 					<a href="#" class="enroll-link">Enroll Now &rarr;</a>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="batch-card text-center">
 					<span class="batch-label">Weekday</span>
-					<p class="batch-date">Feb 26 (1 HR A DAY)</p>
-					<p>08:00 PM IST</p>
+					<p class="batch-date">April 25 (1 HR A DAY)</p>
+					<!-- <p>08:00 PM IST</p>-->
 					<a href="#" class="enroll-link">Enroll Now &rarr;</a>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="batch-card text-center">
 					<span class="batch-label">Weekend</span>
-					<p class="batch-date">Feb 23 (1 HR A DAY)</p>
-					<p>09:00 AM IST</p>
+					<p class="batch-date">April 30 (1 HR A DAY)</p>
+				<!-- 	<p>09:00 AM IST</p>-->
 					<a href="#" class="enroll-link">Enroll Now &rarr;</a>
 				</div>
 			</div>

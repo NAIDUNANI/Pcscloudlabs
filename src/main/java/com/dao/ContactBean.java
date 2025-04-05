@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.sql.*;
+import database.PcsDatabaseConnection;
 
 public class ContactBean {
     private String name;
@@ -37,10 +38,6 @@ public class ContactBean {
     // Save to Database using try-with-resources
     public boolean saveToDatabase() {
         boolean status = false;
-        String url = "jdbc:mysql://localhost:3306/pcscloudlabs?useSSL=false&allowPublicKeyRetrieval=true";
-        String user = "cloudlabs";
-        String pass = "PCSGlobal@4321";
-        
         String sql = "INSERT INTO contact_form (name, email, mobile, message) VALUES (?, ?, ?, ?)";
 
         try {
@@ -48,7 +45,7 @@ public class ContactBean {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("JDBC Driver loaded successfully.");
 
-            try (Connection conn = DriverManager.getConnection(url, user, pass);
+            try (Connection conn = PcsDatabaseConnection.getConnection();
                  PreparedStatement ps = conn.prepareStatement(sql)) {
 
                 ps.setString(1, this.name);

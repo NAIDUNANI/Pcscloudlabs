@@ -5,6 +5,7 @@ import java.util.Properties;
 import java.util.Random;
 import javax.mail.*;
 import javax.mail.internet.*;
+import database.PcsDatabaseConnection;
 
 public class SignUpBean {
     private String email;
@@ -29,14 +30,6 @@ public class SignUpBean {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-
-    private Connection connect() throws Exception {
-    	String url = "jdbc:mysql://localhost:3306/pcscloudlabs?useSSL=false&allowPublicKeyRetrieval=true";
-        String dbUser = "cloudlabs";
-        String dbPassword = "PCSGlobal@4321";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(url, dbUser, dbPassword);
-    }
 
     private String generateCode() {
         Random random = new Random();
@@ -83,7 +76,7 @@ public class SignUpBean {
     public boolean save() {
         boolean success = false;
         String sql = "INSERT INTO Users (Email, PhoneNumber, Password, Created_at, verification_code, verified) VALUES (?, ?, ?, NOW(), ?, 0)";
-        try (Connection conn = connect();
+        try (Connection conn = PcsDatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, this.email);
@@ -106,7 +99,7 @@ public class SignUpBean {
 
     public boolean verifyUser(String email, String code) {
         String sql = "SELECT verification_code FROM Users WHERE email = ? AND verified = 0";
-        try (Connection conn = connect();
+        try (Connection conn = PcsDatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, email);

@@ -262,7 +262,7 @@ body {
 						</div>
 					</div>
 					<div class="reg-btn">
-						<a href="#">Register Now</a>
+						<a href="vip-event.jsp">Register Now</a>
 					</div>
 				</div>
 

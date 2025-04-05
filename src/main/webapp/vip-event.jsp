@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DevOps Engineering - Scaler</title>
+<title>Salesforce Marketing Cloud</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -12,11 +12,7 @@
 <style>
 body {
 	font-family: Arial, sans-serif;
-	padding-top: 150px; /* Prevents overlap with the fixed form */
-}
-
-.reg-flex{
-
+	padding-top: 50px;
 }
 
 .hero-section {
@@ -62,14 +58,49 @@ body {
 /* Fixed Form Container */
 .fixed-form-container {
 	position: fixed;
-	top: 100px; /* Just below the navbar */ right : 20px; width : 350px;
+	top: 100px; /* Just below the navbar */
+	right: 20px;
+	width: 350px;
 	z-index: 999;
 	background: white;
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	width: 350px;
-	right: 20px;
+}
+
+/* Mobile form toggle button */
+.form-toggle-btn {
+	display: none;
+	position: fixed;
+	/* bottom: 20px;
+            right: 20px; */
+	bottom: 65px;
+	right: 15px;
+	z-index: 1000;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: #ff4d4d;
+	color: white;
+	border: none;
+	font-size: 24px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile form container */
+.mobile-form-container {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: white;
+	z-index: 999;
+	padding: 20px;
+	border-radius: 8px 8px 0 0;
+	box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+	max-height: 80vh;
+	overflow-y: auto;
 }
 
 .register-btn {
@@ -115,7 +146,7 @@ body {
 /* Light blue section headers */
 .section-header {
 	background: #f0f8ff;
-	padding: 10px 15px;
+	padding: 10px;
 	font-size: 20px;
 	font-weight: bold;
 	color: #1a3d7c;
@@ -147,6 +178,7 @@ body {
 	justify-content: space-around;
 	text-align: center;
 	margin-top: 15px;
+	margin-bottom: 60px;
 }
 
 .audience-item {
@@ -163,6 +195,46 @@ body {
 	font-size: 14px;
 	color: #333;
 }
+
+/* Responsive styles */
+@media ( max-width : 992px) {
+	body {
+		padding-top: 10px;
+	}
+	.fixed-form-container {
+		display: none;
+	}
+	.form-toggle-btn {
+		display: block;
+	}
+	.mobile-form-container.active {
+		display: block;
+	}
+}
+/* Footer Full Width */
+.footer {
+	width: 100vw;
+	height: 60px;
+	background: #ff4d4d;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.footer p {
+	color: white;
+}
+
+@media ( max-width : 768px) {
+	.footer {
+		height: auto;
+		padding: 10px;
+		flex-direction: column;
+	}
+	.footer p {
+		font-size: 12px;
+		padding: 5px;
+	}
+}
 </style>
 </head>
 <body>
@@ -170,163 +242,222 @@ body {
 	<!-- Navbar -->
 	<nav class="navbar navbar-light bg-light">
 		<div class="container">
-			<a class="navbar-brand fw-bold" href="#">PCS Cloud Lab</a> <a
-				class="btn btn-outline-primary" href="#">Login</a>
+			<a class="navbar-brand fw-bold" href="ongoing-events.jsp">PCS
+				Cloud Lab</a>
 		</div>
 	</nav>
-	<div class="reg-flex">
-		<!-- Hero Section -->
-		<section class="hero-section text-center">
-			<div class="overlay"></div>
-			<div class="container content">
-				<div class="row align-items-center">
-					<div class="col-md-6 text-white">
-						<span class="badge bg-warning text-dark p-2">Free Guidance</span>
-						<h2 class="mt-3">Learn the right skills & tools for</h2>
-						<h1 class="fw-bold bg-success text-white d-inline-block p-2">DevOps
-							Engineering</h1>
-						<p class="mt-3">
-							PCS Cloud Lab Masterclass with <strong>Anshuman Singh</strong>,
-							Ex-Tech Lead, Meta
-						</p>
-						<p>
-							<strong>Tuesday, 18th March | 7:30 - 9:30 PM</strong>
-						</p>
-					</div>
+
+	<!-- Registration Form (Fixed - Desktop) -->
+	<div class="fixed-form-container">
+		<h4 class="title">Register NOW!</h4>
+		<a href="#" class="already-account">Already have an account? Click
+			here</a>
+
+		<form class="mt-3">
+			<div class="mb-2">
+				<input type="email" class="form-control" placeholder="Email">
+			</div>
+			<div class="mb-2 d-flex">
+				<select class="form-select" style="width: 30%;">
+					<option>+91</option>
+				</select> <input type="text" class="form-control" placeholder="Phone">
+			</div>
+			<div class="mb-2">
+				<input type="text" class="form-control" placeholder="Name">
+			</div>
+
+
+			<button class="register-btn">REGISTER FOR FREE</button>
+
+			<p class="text-muted text-center mt-2" style="font-size: 12px;">
+				By continuing, you agree to PCS GLobal <a href="#">Terms</a> and <a
+					href="#">Privacy Policy</a>.
+			</p>
+		</form>
+	</div>
+
+	<!-- Mobile Form Toggle Button -->
+	<button class="form-toggle-btn" id="formToggleBtn">
+		<i class="fas fa-edit"></i>
+	</button>
+
+	<!-- Mobile Form Container -->
+	<div class="mobile-form-container" id="mobileFormContainer">
+		<h4 class="title">Register NOW!</h4>
+		<a href="#" class="already-account">Already have an account? Click
+			here</a>
+
+		<form class="mt-3">
+			<div class="mb-2">
+				<input type="email" class="form-control" placeholder="Email">
+			</div>
+			<div class="mb-2 d-flex">
+				<select class="form-select" style="width: 30%;">
+					<option>+91</option>
+				</select> <input type="text" class="form-control" placeholder="Phone">
+			</div>
+			<div class="mb-2">
+				<input type="text" class="form-control" placeholder="Name">
+			</div>
+
+
+			<button class="register-btn">REGISTER FOR FREE</button>
+
+			<p class="text-muted text-center mt-2" style="font-size: 12px;">
+				By continuing, you agree to PCS GLobal <a href="#">Terms</a> and <a
+					href="#">Privacy Policy</a>.
+			</p>
+		</form>
+
+		<button class="btn btn-outline-secondary w-100 mt-2" id="closeFormBtn">Close</button>
+	</div>
+
+	<!-- Hero Section -->
+	<section
+		class="hero-section text-center text-md-start position-relative">
+		<div class="overlay"></div>
+		<div class="container content">
+			<div class="row align-items-center">
+				<div class="col-md-6 text-white">
+					<span class="badge bg-warning text-dark p-2">Free Guidance</span>
+					<h2 class="mt-3">Learn the right skills & tools for</h2>
+					<h1 class="fw-bold bg-success text-white d-inline-block p-2">Virtual
+						Intenrship Program (VIP)</h1>
+					<p class="mt-3">
+						PCS Cloud Lab Masterclass with <strong>Alok Halder </strong>
+						Founder of PCS Global
+					</p>
+					<!-- <p><strong>Wed, 26th March 2025 | 7:30 - 9:30 PM</strong></p> -->
 				</div>
 			</div>
-		</section>
-
-		<!-- Registration Form (Fixed) -->
-		<div class="fixed-form-container">
-			<h4 class="title">Register NOW!</h4>
-			<p class="countdown">
-				Starts in <span>00 d : 05 h : 36 m</span>
-			</p>
-			<a href="#" class="already-account">Already have an account?
-				Click here</a>
-
-			<form class="mt-3">
-				<div class="mb-2">
-					<input type="email" class="form-control" placeholder="Email">
-				</div>
-				<div class="mb-2 d-flex">
-					<select class="form-select" style="width: 30%;">
-						<option>+91</option>
-					</select> <input type="text" class="form-control" placeholder="Phone">
-				</div>
-				<div class="mb-2">
-					<input type="text" class="form-control" placeholder="Name">
-				</div>
-
-				<button class="register-btn">REGISTER FOR FREE</button>
-
-				<p class="text-muted text-center mt-2" style="font-size: 12px;">
-					By continuing, you agree to Scaler’s <a href="#">Terms</a> and <a
-						href="#">Privacy Policy</a>.
-				</p>
-			</form>
 		</div>
-	</div>
+	</section>
 
 	<!-- Main Content -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-7">
-				<h2 class="title">Roadmap to DevOps Engineering</h2>
+			<!-- < class="col-md-7"> -->
+			<h2 class="title">Roadmap to Virtual Intenrship Program (VIP)</h2>
+			<p>
+				<strong>STARTS ON:</strong> March 18, 2025 7:30 PM (IST) <strong>ENDS
+					ON:</strong> July , 2025 <strong>VENUE:</strong> Online
+			</p>
+			<hr>
+			<div class="info-section bg-light rounded">
+				<h5 class="title text-black p-2">About this Virtual Intenrship
+					Program</h5>
 				<p>
-					<strong>STARTS ON:</strong> March 18, 2025 7:30 PM (IST) <strong>ENDS
-						ON:</strong> March 18, 2025 9:30 PM (IST) <strong>VENUE:</strong> Online
+					From startups to global enterprises, businesses rely on technology
+					to build scalable applications, analyze data, and optimize <br />
+					operations efficiently.
 				</p>
-				<hr>
-				<div class="info-section bg-light rounded">
-					<h5 class="title text-black- p-2">About this Masterclass</h5>
-					<p>From fast-growing startups to global tech giants, every
-						company relies on engineers to scale, deploy, and manage
-						infrastructure efficiently—while keeping costs low and quality
-						high.</p>
-					<p>Enter DevOps Engineers—the key players who bridge the gap
-						between development and operations, foster seamless collaboration,
-						and drive smooth software delivery.</p>
-					<p>Curious about how to become one?</p>
-					<p>
-						Join this Scaler Masterclass with industry expert <span
-							class="highlight">Anshuman Singh</span> on <span
-							class="highlight">Tuesday, 18th March</span>, from <span
-							class="highlight">7:30 PM</span>. Learn the key skills,
-						responsibilities, and career pathways of DevOps engineers, and get
-						expert tips on how to crack interviews.
-					</p>
-				</div>
+				<p>Are you eager to master in-demand skills for a thriving tech
+					career?</p>
+				<p>
+					Join this PCS Cloud Masterclass with industry expert Alok Halder on
+					Tuesday, 18th March, from 7:30 PM. Learn the essential<br />
+					skills, use cases, and career pathways in <span class="highlight">
+						Java Full Stack, MERN / MEAN Full Stack, Data Science AI/ML,
+						Python, DevOps, and <br /> Oracle
+					</span>, along with expert tips on how to crack interviews and excel in
+					these fields.
+				</p>
+				<p>
+					Join this PCS Cloud Masterclass with industry expert <span
+						class="highlight">Alok Halder</span> on <span class="highlight">Tuesday,
+						18th March</span>, from <span class="highlight">7:30 PM</span>. Learn the
+					essential skills, <br /> use cases, and career pathways in
+					Salesforce Marketing Cloud, along with expert tips on how to crack
+					interviews and excel in the field.
+				</p>
+			</div>
 
-				<div class="info-section bg-light rounded mt-3">
-					<h5 class="title text-black p-2">What you will gain from this
-						Masterclass</h5>
+			<div class="info-section bg-light rounded mt-3">
+				<h5 class="title text-black p-2">What you will gain from this
+					Virtual Intenrship Program</h5>
+				<ul>
+					<li><span class="highlight">Java Full Stack : </span> Master
+						Java, Spring Boot, Hibernate, and front-end frameworks like
+						React/Angular to develop end-to-end applications.</li>
+					<li><span class="highlight">MERN / MEAN Full Stack : </span>
+						Learn MongoDB, Express.js, React/Angular, and Node.js to build
+						modern web applications.</li>
+					<li><span class="highlight">Data Science AI/ML : </span> Gain
+						expertise in Python, Machine Learning, Deep Learning, and Data
+						Analytics to extract meaningful insights<br /> from data.</li>
+					<li><span class="highlight">Python : </span> Learn Python
+						programming, automation, and data handling techniques for
+						versatile applications.</li>
+					<li><span class="highlight">DevOps : </span> Understand CI/CD
+						pipelines, Docker, Kubernetes, and cloud deployment strategies.</li>
+					<li><span class="highlight">Oracle : </span> Develop expertise
+						in Oracle databases, SQL queries, and database administration for
+						enterprise solutions.</li>
+				</ul>
+			</div>
+
+			<div class="container mt-4">
+				<div class="section-header">Meet Alok Halder</div>
+				<div class="content-section">
 					<ul>
-						<li>Learn what day-to-day work of a DevOps Engineer looks
-							like</li>
-						<li>Understand DevOps career paths and skills required</li>
-						<li>Get tips on cracking DevOps interviews</li>
+						<li>Founder of, PCS Global</li>
+
 					</ul>
 				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="container mt-4">
-		<!-- Meet Anshuman Singh Section -->
-		<div class="section-header">Meet Instructor Name</div>
-		<div class="content-section">
-			<ul>
-				<li>Co-founder, PCS Global</li>
-				<li>Worked with Mark Zuckerberg and led the team that built
-					Facebook Messenger</li>
-				<li>Was responsible for setting up Facebook’s office outside
-					the US</li>
-				<li>Ex-Tech Team Lead at Facebook</li>
-				<li>Star coder who represented India in the ICPC world finals
-					twice</li>
-			</ul>
-		</div>
-
-		<!-- Certificates Section -->
-		<p>
-			<span class="certificate-text">Certificates:</span> All attendees get
-			certificates from Scaler Academy! Please be careful while entering
-			your details <br>while registering, since they will go on your
-			certificates.
-		</p>
-
-		<!-- This Masterclass is for Section -->
-		<div class="section-header">This Masterclass is for</div>
-		<div class="audience-section">
-			<div class="audience-item">
-				<!-- <img src="https://cdn-icons-png.flaticon.com/512/1940/1940922.png" alt="SDE Upskill"> -->
 				<p>
-					<i class="fa-solid fa-book-open-reader"></i> SDEs looking to
-					upskill
+					<span class="certificate-text">Certificates:</span> All attendees
+					get certificates from PCS Cloud! Please be careful while entering
+					your details <br>while registering, since they will go on your
+					certificates.
 				</p>
 
+				<div class="section-header">This Masterclass is for</div>
+				<div class="audience-section">
+					<div class="audience-item">
+						<p>
+							<i class="fa-solid fa-book-open-reader"></i> Marketers and
+							Marketing Analysts looking to upskill in marketing automation
+						</p>
+					</div>
+					<div class="audience-item">
+						<p>
+							<i class="fa-solid fa-chalkboard-user"></i> Marketing
+							Professionals wanting to transition into Salesforce Marketing
+							Cloud roles
+						</p>
+					</div>
+				</div>
 			</div>
-			<div class="audience-item">
-				<!-- <img src="https://cdn-icons-png.flaticon.com/512/1940/1940936.png" alt="SDE Change"> -->
-				<p>
-					<i class="fa-solid fa-chalkboard-user"></i> SDEs wanting to change
-					from Service to Product Companies
-				</p>
+
+
+			<!-- Footer -->
+			<div class="footer">
+				<footer>
+					<p>
+						Need Help? Talk to us at <a href="tel:08047939631"
+							class="text-white">0123456789</a> or <a href="#"
+							class="text-white">Request a Call</a>
+					</p>
+				</footer>
 			</div>
-		</div>
-	</div>
 
-	<!-- Footer -->
-	<footer class="bg-danger text-white text-center py-3 mt-4">
-		<p>
-			Need Help? Talk to us at <a href="tel:08047939631" class="text-white">08047939631</a>
-			or <a href="#" class="text-white">Request a Call</a>
-		</p>
-	</footer>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script>
+        // Toggle mobile form
+        const formToggleBtn = document.getElementById('formToggleBtn');
+        const mobileFormContainer = document.getElementById('mobileFormContainer');
+        const closeFormBtn = document.getElementById('closeFormBtn');
+        
+        formToggleBtn.addEventListener('click', () => {
+            mobileFormContainer.classList.toggle('active');
+        });
+        
+        closeFormBtn.addEventListener('click', () => {
+            mobileFormContainer.classList.remove('active');
+        });
+    </script>
 </body>
 </html>

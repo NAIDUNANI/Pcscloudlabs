@@ -2,9 +2,9 @@ package com.dao;
 
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import database.PcsDatabaseConnection;
 
 public class LoginBean implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -26,16 +26,13 @@ public class LoginBean implements Serializable {
 
     // Database connection and validation method
     public boolean validateUser() {
-    	String url = "jdbc:mysql://localhost:3306/pcscloudlabs?useSSL=false&allowPublicKeyRetrieval=true";
-        String username = "cloudlabs";
-        String dbPassword = "PCSGlobal@4321";
 
-        try (Connection connection = DriverManager.getConnection(url, username, dbPassword)) {
+        try (Connection conn = PcsDatabaseConnection.getConnection()) {
             System.out.println("Database Connected Successfully!");
             
             // Check if the user exists and is verified
             String sql = "SELECT * FROM Users WHERE Email = ? AND Password = ? AND Verified = 1";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, password);
 

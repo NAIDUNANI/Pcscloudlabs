@@ -200,7 +200,6 @@ body {
 @media ( max-width : 992px) {
 	body {
 		padding-top: 10px;
-		padding-bottom: 100px; /* Add space for mobile form */
 	}
 	.fixed-form-container {
 		display: none;
@@ -214,10 +213,7 @@ body {
 }
 /* Footer Full Width */
 .footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100% !important;
+	width: 100vw;
 	height: 60px;
 	background: #ff4d4d;
 	padding-top: 20px;
